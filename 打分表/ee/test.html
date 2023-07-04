@@ -1,0 +1,756 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  lang="zh-CN"></html>
+<h3>打分系统</h3>
+<p>进入池子只是快速通道移民过程中并不太难的一步，如果你在下表中的分数达到了本页面开头的邀请分数，才有资格递交移民申请，这个邀请分数将绝大部分申请人困在池子里面。<br />
+如果你离目前的邀请分数相去甚远，可以考虑通过留学获得更多的分数，或者通过留学获得省提名。请参考<a href="/t/">旅游签转学签</a>页面。</p>
+<style>
+.entry-content tr td{
+	border-top: 1px solid #000;
+}/*castudy专用*/
+</style>
+<p><script type="text/javascript">
+    // <![CDATA[
+    jQuery(document).ready(function($){
+        var maritalstatus = 1; //0为attached 1为single
+        var result02=0;
+        var result03=0;
+        var result04=0;
+        var result05=0;
+        var result06=0;
+        var result07=0;
+        var result08=0;
+        var result09=0;
+        var result10=0;
+        var result11=0;
+        var result12=0;
+        var age,agetext;
+        var agescore= new Array(21);
+        agescore[0] = new Array(0,0,0);
+        agescore[1] = new Array(18,90,99);
+        agescore[2] = new Array(19,95,105);
+        agescore[3] = new Array(20,100,110);
+        agescore[4] = new Array(30,95,105);
+        agescore[5] = new Array(31,90,99);
+        agescore[6] = new Array(32,85,94);
+        agescore[7] = new Array(33,80,88);
+        agescore[8] = new Array(34,75,83);
+        agescore[9] = new Array(35,70,77);
+        agescore[10] = new Array(36,65,72);
+        agescore[11] = new Array(37,60,66);
+        agescore[12] = new Array(38,55,61);
+        agescore[13] = new Array(39,50,55);
+        agescore[14] = new Array(40,45,50);
+        agescore[15] = new Array(41,35,39);
+        agescore[16] = new Array(42,25,28);
+        agescore[17] = new Array(43,15,17);
+        agescore[18] = new Array(44,5,6);
+        agescore[19] = new Array(45,0,0);
+        agescore[20] = new Array(130,0,0);
+        var edu = -1;
+        var spoedu = -1;
+        var eduscore= new Array(8);
+        eduscore[0] = new Array(0,0,0);
+        eduscore[1] = new Array(28,30,2);
+        eduscore[2] = new Array(84,90,6);
+        eduscore[3] = new Array(91,98,7);
+        eduscore[4] = new Array(112,120,8);
+        eduscore[5] = new Array(119,128,9);
+        eduscore[6] = new Array(126,135,10);
+        eduscore[7] = new Array(140,150,10);
+        var clblis= new Array(13);
+        var clbspe= new Array(13);
+        var clbrea= new Array(13);
+        var clbwri= new Array(13);
+        var clball= new Array(clblis,clbspe,clbrea,clbwri);/*听说读写*/
+        clblis[1]=new Array(1,1,0,0);
+        clblis[2]=new Array(2,2,0,0);
+        clblis[3]=new Array(3.5,3,0,0);
+        clblis[4]=new Array(4.5,4,145,331);
+        clblis[5]=new Array(5,5,181,369);
+        clblis[6]=new Array(5.5,6,217,398);
+        clblis[7]=new Array(6,7,249,458);
+        clblis[8]=new Array(7.5,8,280,503);
+        clblis[9]=new Array(8,9,298,523);
+        clblis[10]=new Array(8.5,10,316,549);
+        clblis[11]=new Array(9,11,0,0);
+        clblis[12]=new Array(9,12,0,0);
+        clbspe[1]=new Array(1,1,0,0);
+        clbspe[2]=new Array(2,2,0,0);
+        clbspe[3]=new Array(3,3,0,0);
+        clbspe[4]=new Array(4,4,181,4);
+        clbspe[5]=new Array(5,5,226,6);
+        clbspe[6]=new Array(5.5,6,271,7);
+        clbspe[7]=new Array(6,7,310,10);
+        clbspe[8]=new Array(6.5,8,349,12);
+        clbspe[9]=new Array(7,9,371,14);
+        clbspe[10]=new Array(7.5,10,393,16);
+        clbspe[11]=new Array(8,11,0,0);
+        clbspe[12]=new Array(9,12,0,0);
+        clbrea[1]=new Array(1,1,0,0);
+        clbrea[2]=new Array(1.5,2,0,0);
+        clbrea[3]=new Array(2.5,3,0,0);
+        clbrea[4]=new Array(3.5,4,121,342);
+        clbrea[5]=new Array(4,5,151,375);
+        clbrea[6]=new Array(5,6,181,406);
+        clbrea[7]=new Array(6,7,207,453);
+        clbrea[8]=new Array(6.5,8,233,499);
+        clbrea[9]=new Array(7,9,248,524);
+        clbrea[10]=new Array(8,10,263,549);
+        clbrea[11]=new Array(8.5,11,0,0);
+        clbrea[12]=new Array(9,12,0,0);
+        clbwri[1]=new Array(1,1,0,0);
+        clbwri[2]=new Array(2,2,0,0);
+        clbwri[3]=new Array(3,3,0,0);
+        clbwri[4]=new Array(4,4,181,4);
+        clbwri[5]=new Array(5,5,226,6);
+        clbwri[6]=new Array(5.5,6,271,7);
+        clbwri[7]=new Array(6,7,310,10);
+        clbwri[8]=new Array(6.5,8,349,12);
+        clbwri[9]=new Array(7,9,371,14);
+        clbwri[10]=new Array(7.5,10,393,16);
+        clbwri[11]=new Array(8,11,0,0);
+        clbwri[12]=new Array(9,12,0,0);
+        var mainlangexam = -1;//第一语言的考试种类
+        var seclangexam = -1;//第二语言的考试种类
+        var spolangexam = -1;//配偶语言的考试种类
+        var score = new Array(3);//考试成绩
+        score[0] = new Array(0,0,0,0);
+        score[1] = new Array(0,0,0,0);
+        score[2] = new Array(0,0,0,0);
+        var clblevels = new Array(2);//CLB的最后获得的级别。保存第一和第二语言。CLB级别，3-记为2,10+记为10
+        clblevels[0] = new Array(0,0,0,0);
+        clblevels[1] = new Array(0,0,0,0);
+        var clbscore = new Array(2);//这是该门的得分。
+        clbscore[0] = new Array(0,0,0,0);
+        clbscore[1] = new Array(0,0,0,0);
+        clbscore[2] = new Array(0,0,0,0);
+        var langscore = new Array(11);
+        langscore[0]=new Array(0,0,0,0);
+        langscore[3]=new Array(0,0,0,0);
+        langscore[4]=new Array(6,6,0,0);
+        langscore[5]=new Array(6,6,1,1);
+        langscore[6]=new Array(8,9,1,1);
+        langscore[7]=new Array(16,17,3,3);
+        langscore[8]=new Array(22,23,3,3);
+        langscore[9]=new Array(29,31,6,5);
+        langscore[10]=new Array(32,34,6,5);
+        var userworkexpcanada =-1;
+        var userworkexpoverseas =-1;
+        var spoworkexpcanada =-1;
+        var workexp= new Array(6);
+        workexp[0]=new Array(0,0,0);
+        workexp[1]=new Array(35,40,5);
+        workexp[2]=new Array(46,53,7);
+        workexp[3]=new Array(56,64,8);
+        workexp[4]=new Array(63,72,9);
+        workexp[5]=new Array(70,80,10);
+        var edutransfer=0;
+        var mainlangtransfer=0;
+        var userworkexpcanadatransfer=0;
+        var userworkexpoverseastransfer=0;
+        //策略：刷新页面时清空所有输入防止bug，设置默认输入
+        $('.inputtext').val('');
+        $('[type="radio"]:not(.checked)').removeAttr("checked");
+        $('[type="checkbox"]').removeAttr("checked");
+        //END
+        $('[name="ques01"]').click(function(){//marriage
+            var p1=$(this).val();
+            if(p1=='attached'){
+                maritalstatus = 0;  
+                $('.spouseres').show();
+            }else if(p1=='single'){
+                maritalstatus = 1; //default now
+                $('.spouseres').hide();
+            }
+            updateageresult();
+            updateeduresult();
+            updateclb($('#ques041'));
+            updateclb($('#ques042'));
+            updateclb($('#ques043'));
+            updateclb($('#ques044'));
+            updatelangresult(0);
+            updateclb($('#ques051'));
+            updateclb($('#ques052'));
+            updateclb($('#ques053'));
+            updateclb($('#ques054'));
+            updatelangresult(1);
+            updateworkresult();
+            updatefinalresult();
+        })
+        $('#ques02').change(function(){//age
+            agetext=$(this).val();
+            age = parseInt(agetext);
+            if(isNaN(age) || age<0){
+                agetext = '';
+                age = 0;
+            }
+            $(this).val(agetext);
+            updateageresult();
+            updatefinalresult();
+        })
+        $('[name="ques03"]').click(function(){//edu
+            edu=$(this).val();
+            updateeduresult();
+            updatetransferedu();
+            updatefinalresult();
+        })
+        $('[name="ques04"]').click(function(){//mainlang
+            mainlangexam=$(this).val();
+            updateclb($('#ques041'));
+            updateclb($('#ques042'));
+            updateclb($('#ques043'));
+            updateclb($('#ques044'));
+            updatelangresult(0);
+            updatetransferedu();
+            updatetransferoverseas();
+            updateaddresult();
+            updatefinalresult();
+        })
+        $('[name="ques05"]').click(function(){//2nd lang
+            seclangexam=$(this).val();
+            if(seclangexam == 99){
+                $('.seclangres').html('');
+            }
+            updateclb($('#ques051'));
+            updateclb($('#ques052'));
+            updateclb($('#ques053'));
+            updateclb($('#ques054'));
+            updatelangresult(1);
+            updateaddresult();
+            updatefinalresult();
+        })
+        $('.lang').change(function(){  //某一科语言分改变时
+            isseclang = updateclb($(this));//更新某个语言分显示的CLB级别，返回第一语言或第二语言
+            updatelangresult(isseclang);//update result03
+            updatetransferedu();
+            updatetransferoverseas();
+            updateaddresult();
+            updatefinalresult();
+        })
+        $('#ques061').change(function(){
+            userworkexpcanada =$(this).val();
+            userworkexpcanada = parseInt(userworkexpcanada);
+            userworkexpcanada = userworkexpcanada>0 ? userworkexpcanada : 0;
+            if (userworkexpcanada>5) {
+                userworkexpcanada=5;
+            }
+            updateworkresult();
+            updatetransferedu();
+            updatetransferoverseas();
+            updatefinalresult();
+        })
+        $('#ques062').change(function(){//overseas
+            userworkexpoverseas =$(this).val();
+            userworkexpoverseas = parseInt(userworkexpoverseas);
+            userworkexpoverseas = userworkexpoverseas>0 ? userworkexpoverseas : 0;
+            userworkexpoverseastransfer =0;
+            if(userworkexpoverseas >0){
+                userworkexpoverseastransfer =1;
+                if(userworkexpoverseas >2){
+                    userworkexpoverseastransfer =2;
+                }
+            }
+            updatetransferoverseas();
+            updatefinalresult();
+        })
+        $('[name="ques07"]').click(function(){
+            spoedu=$(this).val();
+            updatespoeduresult();
+            updatefinalresult();
+        })
+        $('[name="ques08"]').click(function(){
+            spolangexam=$(this).val();
+            if(spolangexam == 99){
+                $('.spolangres').html('');
+            }
+            updateclb($('#ques081'));
+            updateclb($('#ques082'));
+            updateclb($('#ques083'));
+            updateclb($('#ques084'));
+            updatelangresult(2);
+            updatefinalresult();
+        })
+        $('#ques091').change(function(){
+            spoworkexpcanada =$(this).val();
+            spoworkexpcanada = parseInt(spoworkexpcanada);
+            spoworkexpcanada = spoworkexpcanada>0 ? spoworkexpcanada : 0;
+            if (spoworkexpcanada>5) {
+                spoworkexpcanada=5;
+            }
+            updatespoworkresult();
+            updatefinalresult();
+        })
+        $('#ques12 input').click(function(){
+            updateaddresult();
+            updatefinalresult();
+        })
+        //
+        function updateageresult(){
+            var index = 0;
+            while(index < agescore.length){
+                if (age >= agescore[index][0])
+                    if(age < agescore[index+1][0]){
+                        result02 = agescore[index][maritalstatus+1];
+                        break;
+                    }
+                index++;
+            }
+            $('#result02').html(result02);
+        }
+        function updateeduresult(){
+            var au = 'yaott@xinshengdai';
+            if (edu == -1) return;
+            result03 = eduscore[edu][maritalstatus];
+            $('#result03').html(result03);
+            edutransfer =0;
+            if (edu >1){
+                edutransfer = 1;
+                if(edu >4){
+                    edutransfer = 2;
+                }
+            }
+        }
+        function updateclb(obj){
+            //以下判断第一语言或者第二语言或者配偶语言
+            var isseclang,langexam;
+            var name = obj.attr('name');
+            if (name == 'mainlangque'){
+                isseclang = 0;
+                langexam=mainlangexam;
+                //if(mainlangexam ===''){;}  //第一语言种类没选怎么处理
+            }else if(name == 'seclangque'){
+                isseclang = 1;
+                langexam=seclangexam;  //第二语言
+            }else{
+                isseclang = 2;
+                langexam=spolangexam;  //配偶语言
+            }
+            var subid=obj.attr('subid');
+            var tempscore = obj.val();
+            tempscore = parseFloat(tempscore);
+            if (isNaN(tempscore)){//为空或者不是数
+                tempscore = -1;
+            }else if (langexam == 99|| langexam == -1 ){  //考试类型选择了无或者未选择
+                tempscore = -1;
+            }
+            //score[isseclang][subid] = tempscore;
+            var clblevel=3;
+            var index = 4;
+            while(index <= 10){
+                if ( tempscore >= clball[subid][index][langexam]){
+                    clblevel = index;
+                    if( index == 10 ){
+                        break;
+                    }
+                    if( tempscore < clball[subid][index+1][langexam]){
+                        break;
+                    }
+                }
+                index++;
+            }
+            var targetid = obj.attr('targetid');
+            var clbstring;
+            if (clblevel ==3){
+                clbstring = "CLB3-"
+            }else if(clblevel == 10){
+                clbstring = "CLB10+"
+            }else{
+                clbstring = "CLB"+clblevel;
+            }
+            //查询本项实际的语言分数
+            var tempspan;
+            if(!isseclang){  //如果是第一语言
+                tempspan = 0;
+                if(maritalstatus)
+                    tempspan = 1;
+            }else if(isseclang == 1){
+                tempspan = 2;
+            }else if(1){
+                tempspan = 3;
+            }
+            clbscore[isseclang][subid] = langscore[clblevel][tempspan];
+            clbstring = clbstring+"："+clbscore[isseclang][subid]+"分";
+            if(tempscore == -1) {
+                clbstring ='';
+            }else if(isseclang ==0 || isseclang ==1){
+                clblevels[isseclang][subid] = clblevel;
+            }
+            $('#'+targetid).html(clbstring);
+            return isseclang;
+        }
+        function updatelangresult(isseclang){
+            //isseclang 0:第一语言；1:第二语言；2:配偶语言。
+            //第二语言、配偶语言选无时0分；已婚22分上限；
+            //计算变量 mainlangtransfer 供“C. 迁移能力因素（交叉项）”使用。
+            //seclangexam和spolangexam  选99为无；选0,1,2,3对应雅思、思陪、TEF、TCF；-1为未填写
+            var currentlangscore = 0;
+            while(1){
+                if(isseclang ==1){
+                    if(seclangexam == 99){
+                        break; //if中没有办法用AND &#038;&#038;符号。currentlangscore置零。
+                    }else if(seclangexam == -1){
+                        return; //未填写时不更新
+                    }
+                }else if(isseclang ==2){
+                    if(spolangexam == 99){
+                        break; //if中没有办法用AND &#038;&#038;符号。currentlangscore置零。同上
+                    }else if(spolangexam == -1){
+                        return; //未填写时不更新 同上
+                    }
+                }else if(mainlangexam == -1){
+                    return; //未填写时不更新
+                }
+                for (var i=0; i<4; i++){
+                    currentlangscore += clbscore[isseclang][i];
+                }
+                break;
+            }
+            if(isseclang == 1){//第二语言四项合计分
+                if(maritalstatus == 0){
+                    if (currentlangscore >22){
+                        currentlangscore = 22;
+                    }
+                }
+                result05 = currentlangscore;
+                $('#result05').html(currentlangscore);
+            }else if(isseclang == 0){//第一语言四项合计分
+                result04 = currentlangscore;
+                $('#result04').html(currentlangscore);
+                mainlangtransfer =0;
+                var matrix7 = 0;
+                var matrix9 = 0;
+                for(i=0;i<4;i++){
+                    if (clblevels[0][i] >=7){
+                        matrix7++;
+                        if(clblevels[0][i] >=9){
+                            matrix9++;
+                        }
+                    }
+                }
+                if(matrix7 >=4){  //第一语言听说读写四项CLB级别达到7
+                    mainlangtransfer = 1;
+                    if(matrix9 >=4){
+                        mainlangtransfer = 2;
+                    }
+                }// END
+            }else{//配偶语言四项合计分
+                result08 = currentlangscore;
+                $('#result08').html(currentlangscore);
+            }
+            //更新20170606新政，法语CLB7以上加15分的政策，20201028改为25分
+            if (isseclang == 2){
+                return; //配偶语言则不更新
+            }
+            var fr_clb7 = -1; //clblevels的第一下标，0表示主语言为法语TEF、1表示第二语言为法语
+            var en_clb5 = -1;
+            matrix7 = 0; //复用变量， 法语有几门达到了CLB7
+            var matrix5 = 0; //英语有几门达到了CLB5
+            if (mainlangexam == 2 || mainlangexam ==3){
+                fr_clb7 = 0;
+                if (seclangexam == 0 ||  seclangexam == 1){
+                    en_clb5 = 1;
+                }
+            }else if (seclangexam == 2 || seclangexam == 3){
+                fr_clb7 = 1;
+                en_clb5 = 0;
+            }
+            var t = 0;
+            if (fr_clb7 > -1){ //有法语
+                for(i=0; i<4; i++){
+                    if (clblevels[fr_clb7][i] >=7){
+                        matrix7++;
+                        if (en_clb5 > -1){
+                            if  (clblevels[en_clb5][i] >=5){
+                                matrix5++;
+                            }
+                        }
+                    }
+                }
+                if (matrix7 >=4){
+                    t = 25;
+                    if (matrix5 >=4){
+                        t = 50;
+                    }
+                }
+            }
+            $('#ques12_fr').html(t+"分");
+        }
+        function updateworkresult(){
+            if(userworkexpcanada == -1){
+                return;
+            }
+            result06 = workexp[userworkexpcanada][maritalstatus];
+            $('#result06').html(result06);
+            userworkexpcanadatransfer = 0;//userworkexpcanadatransfer TODO
+            if (userworkexpcanada >0){
+                userworkexpcanadatransfer = 1;
+                if(userworkexpcanada >1){
+                    userworkexpcanadatransfer = 2;
+                }
+            }
+        }
+        function updatespoeduresult(){
+            if (spoedu == -1) return;
+            result07 = eduscore[spoedu][2];
+            $('#result07').html(result07);
+        }
+        function updatespoworkresult(){
+            if(spoworkexpcanada == -1){
+                return;
+            }
+            result09 = workexp[spoworkexpcanada][2];
+            $('#result09').html(result09);
+        }
+        function updatetransferedu(){
+            //两个分支，分别计算可以获得的分数，并写到内联的得分后面
+            //最后汇总，判断不得超出50分
+            //transferoverseas同
+            m = new Array(0,13,25,-1,50);
+            /* if(mainlangtransfer + userworkexpcanadatransfer == -2){
+             if(edutransfer == -1){
+             return;
+             }
+             }*/
+            var trans1 = 0;
+            trans1 = m[edutransfer * mainlangtransfer];
+            var trans2 = m[edutransfer * userworkexpcanadatransfer];
+            result10 = trans1+trans2;
+            if(result10 >50) {
+                result10 =50;
+            }
+            $('#result101').html(trans1+'分');
+            $('#result102').html(trans2+'分');
+            $('#result10').html(result10);
+        }
+        function updatetransferoverseas(){
+            m = new Array(0,13,25,-1,50);
+            /* if(mainlangtransfer + userworkexpcanadatransfer == -2){
+             if(userworkexpoverseastransfer == -1){
+             return;
+             }
+             }*/
+            var trans1 = m[userworkexpoverseastransfer * mainlangtransfer];
+            var trans2 = m[userworkexpoverseastransfer * userworkexpcanadatransfer];
+            result11 = trans1+trans2;
+            if(result11 >50) {
+                result11 =50;
+            }
+            $('#result111').html(trans1+'分');
+            $('#result112').html(trans2+'分');
+            $('#result11').html(result11);
+        }
+        function updateaddresult(){   //(#ques12) ques12_fr需要由函数updatelangresult提供，所以必须在其之后运行
+            if ($('#ques12_pnp:checked').length >= 1){
+                result12 = 600;
+            }else {
+                var ques12_offer = parseInt($('[name="ques12_offer"]:checked').val());
+                if (isNaN(ques12_offer)){
+                    ques12_offer = 0;
+                }
+                var ques12_diploma = parseInt($('[name="ques12_diploma"]:checked').val());
+                if (isNaN(ques12_diploma)){
+                    ques12_diploma = 0;
+                }
+                var ques12_fr = parseInt($('#ques12_fr').html());
+                if (isNaN(ques12_fr)){
+                    ques12_fr = 0;
+                }
+                var ques12_sib = parseInt($('#ques12_sib:checked').val());
+                if (isNaN(ques12_sib)){
+                    ques12_sib = 0;
+                }
+                result12 = ques12_offer + ques12_diploma + ques12_fr +ques12_sib;
+                if (result12 > 600){
+                    result12 = 600;
+                }
+            }
+            $('#result12').html(result12);
+        }
+        function updatefinalresult(){
+            var finalresult =0;
+            if(maritalstatus ==0){ //attached
+                finalresult = 0+ result02 + result03 + result04 + result05 + result06 + result07 + result08 + result09 + result10 + result11 + result12;
+            }else{
+                finalresult = 0+ result02 + result03 + result04 + result05 + result06 + result10 + result11 + result12;
+            }
+            $('#finalresult').html(finalresult);
+        }
+    })
+// ]]&gt;
+</script></p>
+<style>
+    .questionnaire{
+        border-collapse:collapse;
+        width:100%;
+        margin-left:10px;
+        margin-right:10px;
+    }
+    .questionnaire td{
+        text-align:center;
+        padding: 2px;
+        border:1px solid;
+    }
+    .questionnaire .left{
+        text-align:left;
+    }
+    #ques12{
+        text-align: left;
+        padding-left: 91px;
+    }
+</style>
+<table class="questionnaire">
+<tr>
+<td width="15%">婚姻</td>
+<td colspan="2">
+            <label><input type="radio" value ="single" name="ques01" class="checked"  checked />单身或<a href="https://eoivisa.com/remarkable-cases-2/">不带伴侣申请</a></label> <input type="radio" value ="attached" name="ques01"/>带配偶或伴侣申请</a></label>  <label>
+        </td>
+</tr>
+<tr>
+<td colspan="2">A. 核心/人力资本因素 Core / human capital factors</td>
+<td>满分460-500</td>
+</tr>
+<tr>
+<td>年龄</td>
+<td width="70%" class="left"><input type="text" placeholder ="请填写年龄数字" id="ques02" width="120px" class="inputtext"/></td>
+<td width="15%"><span id="result02"></span></td>
+</tr>
+<tr>
+<td>学历</td>
+<td class="left">
+            <label><input type="radio" value ="0" name="ques03"/> 高中以下</label><br />
+            <label><input type="radio" value ="1" name="ques03"/> 高中</label><br />
+            <label><input type="radio" value ="2" name="ques03"/> 1年大专</label><br />
+            <label><input type="radio" value ="3" name="ques03"/> 2年大专</label><br />
+            <label><input type="radio" value ="4" name="ques03"/> 3年以上大专或本科</label><br />
+            <label><input type="radio" value ="5" name="ques03"/> 双专业（3年以上+1年以上）</label><br />
+            <label><input type="radio" value ="6" name="ques03"/> 硕士学位或专业学位（如医学博士）</label><br />
+            <label><input type="radio" value ="7" name="ques03"/> 博士学位</label>
+        </td>
+<td ><span id="result03"></span></td>
+</tr>
+<tr>
+<td>第一语言</td>
+<td class="left">
+            <label><input type="radio" value ="0" name="ques04"/> 雅思培训类</label>    <label><input type="radio" value ="1" name="ques04"/> 思陪（CELPIP）</label>    <label><input type="radio" value ="2" name="ques04"/> TEF</label>    <label><input type="radio" value ="3" name="ques04"/> TCF</label><br />
+            <label> 听 <input type="text" id="ques041" name="mainlangque" subid="0" targetid="result041" class="inputtext main lang"/><span id="result041" class=""></span></label><br />
+            <label> 说 <input type="text" id="ques042" name="mainlangque" subid="1" targetid="result042" class="inputtext main lang"/><span id="result042" class=""></span></label><br />
+            <label> 读 <input type="text" id="ques043" name="mainlangque" subid="2" targetid="result043" class="inputtext main lang"/><span id="result043" class=""></span></label><br />
+            <label> 写 <input type="text" id="ques044" name="mainlangque" subid="3" targetid="result044" class="inputtext main lang"/><span id="result044" class=""></span></label>
+        </td>
+<td ><span id="result04"></span></td>
+</tr>
+<tr>
+<td>第二语言</td>
+<td class="left">
+            如果您第一语言选了英语考试，第二语言请选择法语考试，反之亦然<br />
+            <label><input type="radio" value ="99" name="ques05" class="checked" checked /> 无</label>    <label><input type="radio" value ="0" name="ques05"/> 雅思培训类</label>    <label><input type="radio" value ="1" name="ques05"/> 思陪（CELPIP）</label>    <label><input type="radio" value ="2" name="ques05"/> TEF</label>    <label><input type="radio" value ="3" name="ques05"/> TCF</label><br />
+            <label> 听 <input type="text" id="ques051" name="seclangque" subid="0" targetid="result051" class="inputtext main lang"/><span id="result051" class="seclangres"></span></label><br />
+            <label> 说 <input type="text" id="ques052" name="seclangque" subid="1" targetid="result052" class="inputtext main lang"/><span id="result052" class="seclangres"></span></label><br />
+            <label> 读 <input type="text" id="ques053" name="seclangque" subid="2" targetid="result053" class="inputtext main lang"/><span id="result053" class="seclangres"></span></label><br />
+            <label> 写 <input type="text" id="ques054" name="seclangque" subid="3" targetid="result054" class="inputtext main lang"/><span id="result054" class="seclangres"></span></label>
+        </td>
+<td ><span id="result05"></span></td>
+</tr>
+<tr>
+<td>工作经验</td>
+<td class="left">
+            <label>加拿大工作经验（可以不连续） 　　<input type="text" placeholder ="请填写年数" id="ques061"  name="ques06" width="120px" class="inputtext" />年<br /></label><br />
+            <label>非加拿大工作经验（可以不连续） 　<input type="text" placeholder ="请填写年数" id="ques062"  name="" width="120px" class="inputtext" />年</label><br />
+            非加拿大的工作经验不能直接产生分数，但是在后续交叉项有可能算分<br />
+            工作经验必须是<a href="http://eoivisa.com/noc/" target="_blank">NOC</a>的0、A或者B类
+        </td>
+<td><span id="result06"></span></td>
+</tr>
+<tr>
+<td colspan="2">B. 配偶因素 Spouse factors</td>
+<td>满分40</td>
+</tr>
+<tr>
+<td>配偶学历</td>
+<td class="left">
+            <label><input type="radio" value ="0" name="ques07"/> 高中以下</label><br />
+            <label><input type="radio" value ="1" name="ques07"/> 高中</label><br />
+            <label><input type="radio" value ="2" name="ques07"/> 1年大专</label><br />
+            <label><input type="radio" value ="3" name="ques07"/> 2年大专</label><br />
+            <label><input type="radio" value ="4" name="ques07"/> 3年以上大专或本科</label><br />
+            <label><input type="radio" value ="5" name="ques07"/> 双专业（3年以上+1年以上）</label><br />
+            <label><input type="radio" value ="6" name="ques07"/> 硕士学位或专业学位（如医学博士）</label><br />
+            <label><input type="radio" value ="7" name="ques07"/> 博士学位</label>
+        </td>
+<td ><span id="result07" class="spouseres"></span></td>
+</tr>
+<tr>
+<td>配偶第一语言</td>
+<td class="left">
+            <label><input type="radio" value ="0" name="ques08" /> 雅思培训类</label>    <label><input type="radio" value ="1" name="ques08" /> 思陪（CELPIP）</label>    <label><input type="radio" value ="2" name="ques08" /> TEF</label>    <label><input type="radio" value ="3" name="ques08"/> TCF</label>    <label><input type="radio" value ="99" name="ques08" /> 无</label><br />
+            <label> 听 <input type="text" id="ques081" name="spolangque" subid="0" targetid="result081" class="inputtext main lang"/><span id="result081" class="spolangres"></span></label><br />
+            <label> 说 <input type="text" id="ques082" name="spolangque" subid="1" targetid="result082" class="inputtext main lang"/><span id="result082" class="spolangres"></span></label><br />
+            <label> 读 <input type="text" id="ques083" name="spolangque" subid="2" targetid="result083" class="inputtext main lang"/><span id="result083" class="spolangres"></span></label><br />
+            <label> 写 <input type="text" id="ques084" name="spolangque" subid="3" targetid="result084" class="inputtext main lang"/><span id="result084" class="spolangres"></span></label>
+        </td>
+<td ><span id="result08" class="spouseres"></span></td>
+</tr>
+<tr>
+<td>配偶工作经验</td>
+<td class="left">
+            <label>加拿大工作经验（可以不连续）<input type="text" placeholder ="请填写年数" id="ques091"  name="ques06" width="120px" class="inputtext" />年</label><br />
+            工作经验必须是<a href="http://eoivisa.com/noc/" target="_blank">NOC</a>的0、A或者B类
+        </td>
+<td><span id="result09" class="spouseres"></span></td>
+</tr>
+<tr>
+<td colspan="2">C. 迁移能力因素（交叉项） Skill transferability factors
+        </td>
+<td>满分100</td>
+</tr>
+<tr>
+<td>教育<br />
+            最高50分</td>
+<td class="left">
+            本栏自动计算分数<br />
+            教育背景x语言能力 您的得分：<span id="result101"></span><br />
+            1年大专及以上<strong>同时</strong>第一语言每一项都有CLB7级（含）以上，可以获得分数<br />双学位以上或者第一语言每一项都有CLB9级（含）以上，会有更多分数</p>
+<p>            教育背景x加拿大工作经验 您的得分：<span id="result102"></span><br />
+            1年大专及以上<strong>同时</strong>加拿大工作过1年，可以获得分数<br />双学位以上或者加拿大工作两年以上，会有更多分数</td>
+<td ><span id="result10"></span></td>
+</tr>
+<tr>
+<td>海外工作经验<br />
+            最高50分</td>
+<td class="left">
+            本栏自动计算分数<br />
+            海外（包括中国）工作经验x语言能力 您的得分：<span id="result111"></span><br />
+            1年海外工作经历<strong>同时</strong>第一语言每一项都有CLB7级（含）以上，可以获得分数<br />3年海外工作经历或者第一语言每一项都有CLB9级（含）以上，会有更多分数</p>
+<p>            海外工作经验x加拿大工作经验 您的得分：<span id="result112"></span><br />
+            海外工作1年<strong>同时</strong>加拿大工作1年，可以获得分数<br />3年海外工作经历或者加拿大工作两年以上，会有更多分数</td>
+<td ><span id="result11"></span></td>
+</tr>
+<tr>
+<td colspan="2">D. 附加分 Addtional points
+        </td>
+<td>满分600</td>
+</tr>
+<tr>
+<td colspan="2" id="ques12">
+            省提名<br />
+            <label><input type="checkbox" id="ques12_pnp" value="600" />我有省提名</label><br />
+            雇主担保（LMIA或者封闭式工签） <br />
+            <label><input type="radio" name="ques12_offer" value="200">我有00类的雇主担保</label><br />
+            <label><input type="radio" name="ques12_offer" value="50">我有其他类的雇主担保</label><br />
+            <label><input type="radio" name="ques12_offer" value="0">没有雇主担保</label><br />
+            在加拿大学历 <br />
+            <label><input type="radio" name="ques12_diploma" value="30">我有学制3年以上的加拿大学历，或者加拿大的硕士、博士学历</label><br />
+            <label><input type="radio" name="ques12_diploma" value="15">我有学制1-2年的的加拿大学历</label><br />
+            <label><input type="radio" name="ques12_diploma" value="0">没有上述学历</label><br />
+            (<a href="https://eoivisa.com/express-entry-crs-update-october-2020/">2020-10-27更新的规则</a>)法语加分 <br />
+            法语达到 CLB7 以上会自动产生附加分。您的得分： <span id="ques12_fr" value="0">0分</span><br />
+            兄弟姐妹加分 （<a href="/eejun6th2017/">查看兄弟姐妹的定义</a>）<br />
+            <label><input type="checkbox" id="ques12_sib" value="15" />申请人或配偶有加拿大兄弟姐妹</label>
+        </td>
+<td><span id="result12"></span></td>
+</tr>
+<tr>
+<td colspan="2">总分</td>
+<td><span id="finalresult"></span></td>
+</tr>
+</table>
